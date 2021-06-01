@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(MainActivity.this,"LOGOUT SUCCESSFUL", Toast.LENGTH_SHORT).show();
 
     }
+    private void goVieworder(){
+        startActivity(new Intent(MainActivity.this,viewOrderActivity.class));
+    }
 
 
     @Override
@@ -91,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()){
             case  R.id.logoutMenu:{
                 Logout();
+                return true;
+            }
+            case  R.id.orderMenu:{
+                goVieworder();
             }
         }
         return super.onOptionsItemSelected(item);

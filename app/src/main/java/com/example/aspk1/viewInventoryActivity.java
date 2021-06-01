@@ -14,10 +14,14 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +31,16 @@ public class viewInventoryActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirestoreRecyclerAdapter<Items,ItemsViewHolder> itemAdapter;
     RecyclerView mrecyclerview;
-    //TextView totalnoofitem,totalnoofsum;
-    //int counttotalnoofitem =0;
+    TextView totalnoofitem,totalnoofsum;
     String userId;
+    int count;
     //adapter Adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_inventory);
-        //totalnoofitem =findViewById(R.id.totalnoitem);
-       // totalnoofsum = findViewById(R.id.totalsum);
+        totalnoofitem =findViewById(R.id.totalnoitem);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
@@ -56,10 +59,27 @@ public class viewInventoryActivity extends AppCompatActivity {
         //itemcode.add("Test");
         //itemexpdate.add("test");
 
+        //DocumentReference docref=fStore.collection("inventory").document(userId).collection("myItems")
+
+        fStore.collection("inventory").document(userId).collection("myItems")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            count = task.getResult().size();
+                            totalnoofitem.setText(Integer.toString(count));
+                        }else{
+                            totalnoofitem.setText("0");
+                        }
+                    }
+                });
+
 
 
 
         Query query = fStore.collection("inventory").document(userId).collection("myItems").orderBy("itemname", Query.Direction.DESCENDING);
+
         FirestoreRecyclerOptions<Items> allItems = new FirestoreRecyclerOptions.Builder<Items>()
                 .setQuery(query,Items.class)
                 .build();

@@ -15,7 +15,18 @@
         android:screenOrientation="sensorPortrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ASPK1">
-        <activity android:name=".ScanDeleteitemActivity"></activity>
+        <activity android:name=".confirmOrderActivity"></activity>
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ScanAddorderActivity" />
+        <activity android:name=".addOrderActivity" />
+        <activity android:name=".viewOrderActivity" />
+        <activity android:name=".ScanDeleteitemActivity" />
         <activity android:name=".ScanSearchitemActivity" />
         <activity android:name=".ScanAdditemActivity" />
         <activity android:name=".viewInventoryActivity" />
@@ -23,13 +34,7 @@
         <activity android:name=".deleteItemActivity" />
         <activity android:name=".addItemActivity" />
         <activity android:name=".LogIn" />
-        <activity android:name=".SignUp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".SignUp" />
         <activity android:name=".MainActivity" />
     </application>
 
