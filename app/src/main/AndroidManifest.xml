@@ -15,7 +15,10 @@
         android:screenOrientation="sensorPortrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ASPK1">
-        <activity android:name=".confirmOrderActivity"></activity>
+        <activity android:name=".viewShippingActivity"></activity>
+        <activity android:name=".addShippingActivity" />
+        <activity android:name=".warehouseDashboardActivity" />
+        <activity android:name=".confirmOrderActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/orderCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_shadow_end_color"
+    android:orientation="vertical"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundgradient"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/viewshippingbarcodename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Barcode"
+            android:textColor="#ffff"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/viewshippingbarcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="53dp"
+            android:layout_marginLeft="50dp"
+            android:layout_toEndOf="@+id/viewshippingbarcodename"
+            android:text="TextView"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/viewshippingnamename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Item Name"
+            android:textColor="#ffff"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/viewshippingname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="67dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/viewshippingnamename"
+            android:text="TextView"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/viewshippingqtname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Item Quantity"
+            android:textColor="#ffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/viewshippingqt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/viewshippingqtname"
+            android:text="TextView"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/viewshippingpricename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Shipping price"
+            android:textColor="#ffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/viewshippingprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@+id/viewshippingpricename"
+            android:text="TextView"
+            android:textColor="#ffff" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

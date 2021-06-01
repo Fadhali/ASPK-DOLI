@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -49,8 +50,9 @@ public class SignUp extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
 
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext() ,MainActivity.class));
-            finish();
+            checkIfWarehouse(fAuth.getCurrentUser().getUid());
+            //startActivity(new Intent(getApplicationContext() ,MainActivity.class));
+            //finish();
         }
 
         mGoLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +114,7 @@ public class SignUp extends AppCompatActivity {
                                 }
                             });
                             startActivity(new Intent(getApplicationContext() ,MainActivity.class));
+                            finish();
 
                         }else{
                             Toast.makeText(SignUp.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -119,6 +122,24 @@ public class SignUp extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+    }
+    private void checkIfWarehouse(String uid) {
+        DocumentReference docref= fStore.collection("users").document(uid);
+        docref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d(TAG, "onSuccess: " + documentSnapshot.getData());
+
+                if(documentSnapshot.getString("isWarehouse") !=null ){
+                    startActivity(new Intent(getApplicationContext(),warehouseDashboardActivity.class));
+                    finish();
+                }else{
+                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    finish();
+                }
+
             }
         });
     }
